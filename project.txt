@@ -1,0 +1,28 @@
+npx create-react-app frontend
+npm install react-router-dom  //frontend
+npm install init  //tour
+npm install express //tour
+npm install react-redux
+npm install --save redux
+npm install @babel/cli @babel/core @babel/node @babel/preset-env nodemon --save-dev
+
+npm install redux-thunk
+npm install axios
+npm install js-cookie
+npm install dotenv
+npm install mongoose
+npm install jsonwebtoken
+npm install body-parser
+
+
+.babelrc
+{
+    "presets" :[
+        [
+            "@babel/preset-env"
+        ]
+    ]
+}
+
+.env file 
+	MONGODB_URL=mongodb://localhost/amazona
