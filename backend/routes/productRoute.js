@@ -25,7 +25,7 @@ const router = express.Router();
 //   res.send(products);
 // });
 
-router.get('/:id', async (req, res) => {
+router.get('/id', async (req, res) => {
   // const product = await Product.findOne({ _id: req.params.id });
   const product = await Product.find({});
   if (product) {

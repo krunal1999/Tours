@@ -11,6 +11,7 @@ import ProductsScreen from './screens/ProductsScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -32,13 +33,11 @@ function App() {
           </div>
           <div className="header-links">
           <Link to="/cart/:id?n">Cart </Link>
-            
             { userInfo ? (
               <Link to="/profile">{userInfo.name}</Link>
             ) : (
               <Link to="/signin">Sign In</Link>
             )}
-            
           </div>
         </header>
         <aside className="sidebar">
@@ -50,7 +49,6 @@ function App() {
             <li>
               <Link to="/category/Beaches">Beaches</Link>
             </li>
-
             <li>
               <Link to="/category/Fortes">Forts</Link>
             </li>
@@ -59,7 +57,7 @@ function App() {
         <main className="main">
           <div className="content">
             {/* <Route path="/orders" component={OrdersScreen} /> */}
-            {/* <Route path="/profile" component={ProfileScreen} /> */}
+            <Route path="/profile" component={ProfileScreen} />
             {/* <Route path="/order/:id" component={OrderScreen} /> */}
             <Route path="/products" component={ProductsScreen} />
             <Route path="/shipping" component={ShippingScreen} />
@@ -78,5 +76,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

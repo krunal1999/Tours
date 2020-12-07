@@ -5,9 +5,6 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import userRoute from './routes/userRoute';
 import data from "./data";
-// import productRoute from './routes/productRoute';
-
-
 dotenv.config();
 const mongodburl = config.MONGODB_URL;
 
@@ -17,13 +14,9 @@ mongoose.connect(mongodburl ,{
   useCreateIndex : true
 }).catch(error => console.log(error.reason));
 
-
-
 const app = express();
-
 app.use(bodyParser.json());
 app.use("/api/users" , userRoute);
-// app.use("/api/products" , productRoute);
 
 app.get("/api/products/:id", (req,res) =>{
   const productId = req.params.id;
@@ -35,7 +28,6 @@ app.get("/api/products/:id", (req,res) =>{
   else{
     res.status(404).send({msg : "Product not found"});
   }
- 
 });
 
 app.get("/api/products", (req,res) =>{

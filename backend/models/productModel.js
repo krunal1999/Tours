@@ -20,8 +20,11 @@ const prodctSchema = new mongoose.Schema({
   description: { type: String, required: true },
   rating: { type: Number, default: 0, required: true },
   numReviews: { type: Number, default: 0, required: true }
+},
+{
+  timestamps : true,
 });
 
-const productModel = mongoose.model('Product', prodctSchema);
+const product = mongoose.model('Product', prodctSchema);
 
-export default productModel;
+export default product;
