@@ -13,6 +13,9 @@ function ProfileScreen(props) {
   const { userInfo } = userSignin;
   const handleLogout = () => {
     dispatch(logout());
+    sessionStorage.clear();
+    localStorage.clear();
+    
     props.history.push("/signin");
   };
   const submitHandler = (e) => {

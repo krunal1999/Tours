@@ -2,12 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
-// import { Route, Redirect, Switch } from "react-router";
-// import { createOrder } from '../actions/orderActions';
+
 function PlaceOrderScreen(props) {
   const cart = useSelector((state) => state.cart);
-  // const orderCreate = useSelector(state => state.orderCreate);
-  // const {  success, order } = orderCreate;
 
   const { cartItems, shipping, payment } = cart;
   if (!shipping.address) {
@@ -15,36 +12,20 @@ function PlaceOrderScreen(props) {
   } else if (!payment.paymentMethod) {
     props.history.push("/payment");
   }
+
   const itemsPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   const shippingPrice = 0;
   const taxPrice = 0.18 * itemsPrice;
   const totalPrice = Math.round(itemsPrice + taxPrice);
 
-  // const dispatch = useDispatch();
-
-  // const placeOrderHandler = () => {
-  // create an order
-  // dispatch(createOrder({
-  //   orderItems: cartItems, shipping, payment, itemsPrice, shippingPrice,
-  //   taxPrice, totalPrice
-  // }));
-  // }
-  // useEffect(() => {
-  //   if (success) {
-  //     props.history.push("/order/" + order._id);
-  //   }
-
-  // }, [success]);
   const pay1 = (e) => {
     alert("payment is processing");
-    const timer = setTimeout(() => {
+    setTimeout(() => {
       alert("payment done");
     }, 3000);
-    const timer1 = setTimeout(() => {
+    setTimeout(() => {
       props.history.push("/");
     }, 3000);
-    sessionStorage.clear();
-    localStorage.clear();
   };
 
   return (

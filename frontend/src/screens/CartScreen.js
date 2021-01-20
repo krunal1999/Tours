@@ -10,6 +10,7 @@ function CartScreen(props) {
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
     : 1;
+    
   const dispatch = useDispatch();
 
   const removeFromCartHandler = (productId) => {
