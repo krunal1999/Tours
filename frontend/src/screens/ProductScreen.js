@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import { detailsProduct} from '../actions/productActions';
+import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
-  const[qty , setQty] = useState(1);
+  const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { product, loading, error } = productDetails;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(detailsProduct(props.match.params.id));
-    
-    
+
     return () => {
       //
     };
   }, []);
-  
-  const handleAddToCart = () =>{
+
+  const handleAddToCart = () => {
     props.history.push("/cart/" + props.match.params.id + "?qty=" + qty);
-  }
+  };
 
   return (
     <div>
@@ -44,27 +43,28 @@ function ProductScreen(props) {
                   <h4>{product.name}</h4>
                 </li>
                 <li>
-                      Stars: {product.rating }<br></br>
-                      Review: {product.numReviews}
+                  Stars: {product.rating}
+                  <br></br>
+                  Review: {product.numReviews}
                 </li>
                 <li>
                   Price: <b>{product.price + " Rs"}</b>
                 </li>
-                <li>
+                {/* <li>
                   Description:
                   <div>{product.description}</div>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="details-action">
               <ul>
                 <li>Price: {product.price + " Rs"}</li>
                 <li>
-                  Status:{' '}
-                  {product.countInStock > 0 ? 'Available' : 'Unavailable.'}
+                  Status:{" "}
+                  {product.countInStock > 0 ? "Available" : "Unavailable."}
                 </li>
                 <li>
-                  Count:{' '}
+                  Count:{" "}
                   <select
                     value={qty}
                     onChange={(e) => {
@@ -74,7 +74,7 @@ function ProductScreen(props) {
                     {[...Array(product.countInStock).keys()].map((x) => (
                       <option key={x + 1} value={x + 1}>
                         {x + 1}
-                      </option> 
+                      </option>
                     ))}
                   </select>
                 </li>
@@ -91,7 +91,6 @@ function ProductScreen(props) {
               </ul>
             </div>
           </div>
-         
         </>
       )}
     </div>
